@@ -79,11 +79,10 @@ Azaz fel kell vennünk a programunkban az alábbi két utasítást:<br>
 
   ```js
 const app = require('express')()
-const bodyParser = require('body-parser')
 
 // without these the body will be undefined
-app.use(bodyParser.json()) // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.post('/profile', function (req, res, next) {
   console.log(req.body)
