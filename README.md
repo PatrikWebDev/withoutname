@@ -118,6 +118,17 @@ HTTP request/response/status codes: [Youtube video](https://www.youtube.com/watc
 
 <h1>Mi egy route, példa egy létrehozására</h1>
 <p>
+
+```js
+// app.js
+const express = require('express')
+const app = express()
+const port = 3000 // nem a 80 port, mert azt éles webszerverekre használjuk
+
+app.get('/hello', (req, res) => res.send('Hello World!')) // (1)
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+```
 routing: elfogadott HTTP path info minták és ("útvonalak", "routes") HTTP methodok és<br>
 az útvonalak megnyitását/meghívását lekezelő függvények összekapcsolása<br>
 figyelem: HTTP method != metódus JSben!<br>
@@ -128,8 +139,28 @@ adott egy default router<br>
 testreszabható egyedi routerek (csak megemlítés szintjén)<br>
 egymásba ágyazott, összetett routerek (csak említés szintjén)<br>
 endpoint<br>
-(ez a rész az órai index.md van másolva)<br>
+Példakód fentebb<br>
 példák: https://github.com/szcsl/bh-fst01/blob/master/docs/lectures/20200118/helloWorld/index.js <br>
+
+Express.js documentation
+
+Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
+
+Each route can have one or more handler functions, which are executed when the route is matched.
+
+Route definition takes the following structure:
+```js
+app.METHOD(PATH, HANDLER)
+```
+Where:
+
+<ul>
+<li>app is an instance of express</li>
+<li>METHOD is an HTTP request method, in lowercase.</li>
+<li>PATH is a path on the server.</li>
+<li>HANDLER is the function executed when the route is matched.</li>
+</ul>
+
 </p>
 
 
