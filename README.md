@@ -9,6 +9,9 @@ GET is one of the most common HTTP methods.<br>
 Express.js is a modular web framework for Node.js.<br>
 It is used for easier creation of web applications and services.<br>
 Express.js simplifies development and makes it easier to write secure, modular and fast applications.<br>
+
+Rövid bemutató az express js használatáról:
+[Youtube video](https://www.youtube.com/watch?v=L72fhGm1tfE&t=2006s)
 </p>
 
 <h1>Mi a middleware + példa </h1>
@@ -17,7 +20,8 @@ Middleware functions are functions that have access to the request object (req),
 the response object (res), and the next middleware function in the application’s request-response cycle.<br>
 The next middleware function is commonly denoted by a variable named next.<br>
 
-Példák ezen az oldalon: https://medium.com/@selvaganesh93/how-node-js-middleware-works-d8e02a936113
+Példák ezen az oldalon: https://medium.com/@selvaganesh93/how-node-js-middleware-works-d8e02a936113<br>
+Middlewares: [Youtube video 1](https://www.youtube.com/watch?v=-lRgL9kj_h0&feature=youtu.be) | [Youtube video 2](https://www.youtube.com/watch?v=aPxKObvx9II&list=PLBAZWBMYeVYhZ_7V_dHNECjVCeBHVkqSo&index=13&t=0s)
 </p>
 
 <h1>Mi a query string és mi a parameter, 1-1 pelda </h1>
@@ -29,6 +33,8 @@ példa= "https://example.com/?foo=bar&foo2=bar2"; <br>
   
 parameter = Key-value pairs which are query component. <br>
 Példa = http://example.com/foo;key1=value1?key2=value2#key3=value3 <br>
+
+Query string: [Youtube video](https://www.youtube.com/watch?v=QTAYRmMsVCI)
 </p>
 
 <h1>Hogyan lesz elérhető a req.body </h1>
@@ -39,6 +45,12 @@ router.post('/addUser', userController.addNewUser); <br>
 	        users.push(data.username);<br>
 	        res.status(204).send('ok');<br>
 	    }<br>
+
+Ahhoz hogy a fenti példában a data változó értéke ne undefined legyen és ténylegesen elérjük magát a request body-t használnunk kell az express két middleware függvényét.<br>
+
+Azaz fel kell vennünk a programunkban az alábbi két utasítást:<br>
+  app.use(express.json());<br>
+  app.use(express.urlencoded({extended: false}));
 </p>
 <h1>Mi a controller</h1>
 <p>
@@ -62,6 +74,8 @@ These responses contain a status code and if the request was successful, the req
 An example status code for a successful request would be “200” and <br>
 an example status code for an unsuccessful request would be “404”. <br>
 Other common status codes include “300” for redirects and “500” for server errors.<br>
+
+HTTP request/response/status codes: [Youtube video](https://www.youtube.com/watch?v=iYM2zFP3Zn0&t=1628s)
 </p>
 
 <h1>Mi egy route, példa egy létrehozására</h1>
