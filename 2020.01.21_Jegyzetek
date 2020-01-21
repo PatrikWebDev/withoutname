@@ -1,0 +1,50 @@
+
+
+<h1> Ez egy "próba" file az órán készült jegyzetekről <br>
+Lehet hogy ha így közösen dolgozzunk rajta és kiegészítjük akkor hasznos lesz mindenki számára</h1>
+
+<h1>Promise</h1>
+<p>Egy jövőbeli értéket reprezentál.<br>
+ES6-os feature.<br>
+Három állapota lehet: success, fail, pending<br>
+Asyncron futni, ezt külön kell majd kezelni<br>
+A fetch API Promise-okkal dolgozik.<br>
+Példa Promise létrehozására:
+
+const p = new Promise((resolve, reject) => {
+    pl: console.log('hola')
+        resolve(); // pending-ből átvált resolve-ra
+})
+
+de
+const p = new Promise((resolve, reject) => {
+   setTimeOut(()=>{
+       console.log('hola')
+       resolve()
+   }, 6000)
+})
+- késleltetve lesz a Promise állapota resolve-d</p>
+
+<h1>Fetch</h1>
+<p>Adatokat kérdezz le. <br> 
+A fetch hívás visszatérési értéke Promise Lesz. <br>
+Példa:
+const p = fetch(...)
+
+p.then((response)=>{
+    logic goes here
+    itt dolgozzuk fel a kódunkat 
+}).catch (()=>{....}) a hibakezelés
+
+Az első érték a success-t kezeli.const p = fetch(...)
+
+p.then((response)=>{
+    //logic goes here
+    itt dolgozzuk fel a kódunkat 
+}).catch (()=>{....}) a hibakezelés
+Az első érték a success-t kezeli. <br>
+A második az error-t kezeli. <br>
+Promisok chainnelése a .then-nel lehetséges.<br>
+</p>
+<h1>Express handlebars</h1>
+<p>Az NPM package-es oldala: https://www.npmjs.com/package/express-handlebars</p>
