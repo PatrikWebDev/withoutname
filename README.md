@@ -1,7 +1,23 @@
 <h1> POST és GET közötti különbség</h1>
-<p>GET is used to request data from a specified resource. <br>
+<p>GET is used to request data from a specified resource. </p>
 GET is one of the most common HTTP methods.<br>
- POST is used to send data to a server to create/update a resource. <br>
+<ul>
+<li>GET requests can be cached</li>
+<li>GET requests remain in the browser history</li>
+<li>GET requests can be bookmarked</li>
+<li>GET requests should never be used when dealing with sensitive data</li>
+<li>GET requests have length restrictions</li>
+<li>GET requests are only used to request data (not modify)/li>
+</ul>
+
+
+<p>POST is used to send data to a server to create/update a resource. </p>
+<ul>
+<li>POST requests are never cached</li>
+<li>POST requests do not remain in the browser history</li>
+<li>POST requests cannot be bookmarked</li>
+<li>POST requests have no restrictions on data length</li>
+</ul>
 </p>
 
 <h1>Mire jó az express</h1>
@@ -31,8 +47,15 @@ which assigns values to specified parameters. The query string commonly includes
 by a Web browser or other client application, for example as part of an HTML form<br>
 példa= "https://example.com/?foo=bar&foo2=bar2"; <br>
   
-parameter = Key-value pairs which are query component. <br>
-Példa = http://example.com/foo;key1=value1?key2=value2#key3=value3 <br>
+Parameter: <br>
+Route parameters are named URL segments that are used to capture the values specified at their position in the URL. <br>
+The captured values are populated in the req.params object,<br> with the name of the route parameter specified in the path as their respective keys.<br>
+
+```
+Route path: /users/:userId/books/:bookId
+Request URL: http://localhost:3000/users/34/books/8989
+req.params: { "userId": "34", "bookId": "8989" }
+```
 
 Query string: [Youtube video](https://www.youtube.com/watch?v=QTAYRmMsVCI)
 </p>
@@ -51,6 +74,22 @@ Ahhoz hogy a fenti példában a data változó értéke ne undefined legyen és 
 Azaz fel kell vennünk a programunkban az alábbi két utasítást:<br>
   app.use(express.json());<br>
   app.use(express.urlencoded({extended: false}));
+
+  Összegezve
+
+  ```js
+const app = require('express')()
+const bodyParser = require('body-parser')
+
+// without these the body will be undefined
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+app.post('/profile', function (req, res, next) {
+  console.log(req.body)
+  res.json(req.body)
+})
+  ```
 </p>
 <h1>Mi a controller</h1>
 <p>
